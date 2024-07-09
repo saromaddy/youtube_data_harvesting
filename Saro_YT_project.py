@@ -19,7 +19,7 @@ background_image_path = r'/Users/saro/Desktop/Final Submission/essentials/bgimgg
 
 # Convert the image to base64
 base64_image = get_base64_of_bin_file(background_image_path)
-
+#checking
 # CSS to inject
 page_bg_img = f"""
 <style>
