@@ -6,6 +6,7 @@ import datetime
 import plotly.express as px
 import re
 import base64
+import os
 
 # Function to convert image to base64
 def get_base64_of_bin_file(bin_file):
@@ -15,7 +16,7 @@ def get_base64_of_bin_file(bin_file):
 
 
 # Path to your image
-background_image_path = r'/Users/saro/Desktop/Final Submission/essentials/bgimgg.jpg'
+background_image_path = r'/Users/saro/Desktop/youtube_data_harvesting/essentials/bgimgg.jpg'
 
 # Convert the image to base64
 base64_image = get_base64_of_bin_file(background_image_path)
@@ -41,9 +42,15 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.markdown("<h1 style='font-size:30px; color:Red;text-align:center;'>YouTube Data Harvesting and Warehousing using Streamlit and SQL</h1>", unsafe_allow_html=True)
 
+
+def get_secret():
+    API_KEY = os.getenv('API_KEY')
+    return API_KEY
+
+
 #API key connection
 def Api_connect():
-    Api_Id="AIzaSyAl4M4QQsPqGHyaEL02UCB6khSW1qg-kAQ"
+    Api_Id = get_secret()
     api_service_name="youtube"
     api_version="v3"
     youtube=build(api_service_name,api_version,developerKey=Api_Id)
@@ -464,7 +471,7 @@ def insert_channel_details(conn, channel_id):
 # Streamlit app sections
 def about_the_developer():
     st.header("About the Developer")
-    st.image("/Users/saro/Desktop/Final Submission/essentials/saro.jpg", caption="Saravana Kumar T", width=250)
+    st.image("essentials/saro.jpg", caption="Saravana Kumar T", width=250)
     st.subheader("Contact Details")
     st.write("Email: saromaddymca@gmail.com")
     st.write("Phone: 8940574870")
